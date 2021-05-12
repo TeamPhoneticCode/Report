@@ -60,6 +60,7 @@ y1, sr1 = librosa.load(filename1)
 y2, sr2 = librosa.load(filename2)
 
 #outputWav = numpy.hstack((y1,y2))
+#outputWav = numpy.vstack((y1,y2))
 
 # MERGE
 librosa.display.waveplot((y1+y2)/2, sr=int((sr1+sr2)/2))
