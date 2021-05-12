@@ -47,6 +47,8 @@ samplerate, data = wavfile.read(wav_fname)
 '''
 
 '''
+import IPython as ip
+
 info = mediainfo("./mixedSound.wav")
 print(info['sample_rate'])
 
@@ -54,11 +56,16 @@ print(info['sample_rate'])
 filename1 = "./hello.wav"
 filename2 = "./Nonspeech/n3.wav"
 
+y1, sr1 = librosa.load(filename1)
+y2, sr2 = librosa.load(filename2)
 
-y1, sr = librosa.load(filename1)
-y2, sr = librosa.load(filename2)
+#outputWav = numpy.hstack((y1,y2))
 
-outputWav = numpy.hstack((y1,y2))
+# MERGE
+librosa.display.waveplot((y1+y2)/2, sr=int((sr1+sr2)/2))
 
-sf.write("mixSound.wav", outputWav, sr)
+# REPRODUCE
+ip.display.Audio((y1+y2)/2, rate=int((sr1+sr2)/2))
+
+#sf.write("mixSound.wav", outputWav, sr)
 '''
