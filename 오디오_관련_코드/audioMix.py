@@ -1,19 +1,20 @@
 from pydub import AudioSegment
-import numpy
-import matplotlib.pyplot as plt
-import librosa
-import librosa.display
-import soundfile as sf
-from pydub.utils import mediainfo
+
+
 SAMPLING_RATE = 16000
 MONO = 1
 
-OUTPUT_FILE = "mixedSound_04.wav"
-sound1 = AudioSegment.from_wav("./noise_04.wav")
-sound2 = AudioSegment.from_wav("./example1.wav")
+number = 45
+
+OUTPUT_FILE = "./mixedSound_"+str(number)+".wav"
+NOISE_FILE = "./n"+str(number)+".wav"
+ORIGINAL_FILE = "./example1.wav"
+
+sound1 = AudioSegment.from_wav(NOISE_FILE)
+sound2 = AudioSegment.from_wav(ORIGINAL_FILE)
 
 combined_sounds = sound1 + sound1 + sound1 + sound1 + sound1 # 반복 횟수 조절
-combined_sounds = combined_sounds   # dB 조절 (+ $$$), (- $$$)
+combined_sounds = combined_sounds - 15   # dB 조절 (+ $$$), (- $$$)
 output = sound2.overlay(combined_sounds)
 output = output.set_channels(MONO) # stereo to mono
 output = output.set_frame_rate(SAMPLING_RATE) # frame_rate : 16000
