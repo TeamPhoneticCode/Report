@@ -1,5 +1,7 @@
 from pydub import AudioSegment
 
+##import soundfile as sf
+##from pydub.utils import mediainfo
 
 SAMPLING_RATE = 16000
 MONO = 1
@@ -34,40 +36,3 @@ f1 = wave.open(OUTPUT_FILE, 'r')
 print("Channels : " + str(f1.getnchannels()))
 
 
-
-'''
-from scipy.io import wavfile
-import scipy.io
-from os.path import dirname, join as pjoin
-
-data_dir = pjoin(dirname(scipy.io.__file__), 'tests', 'data')
-wav_fname = pjoin(data_dir, "mixedSound_02.wav")
-
-samplerate, data = wavfile.read(wav_fname)
-##print(f"number of channels = {data.shape[1]}")
-'''
-
-'''
-import IPython as ip
-
-info = mediainfo("./mixedSound.wav")
-print(info['sample_rate'])
-
-
-filename1 = "./hello.wav"
-filename2 = "./Nonspeech/n3.wav"
-
-y1, sr1 = librosa.load(filename1)
-y2, sr2 = librosa.load(filename2)
-
-#outputWav = numpy.hstack((y1,y2))
-#outputWav = numpy.vstack((y1,y2))
-
-# MERGE
-librosa.display.waveplot((y1+y2)/2, sr=int((sr1+sr2)/2))
-
-# REPRODUCE
-ip.display.Audio((y1+y2)/2, rate=int((sr1+sr2)/2))
-
-#sf.write("mixSound.wav", outputWav, sr)
-'''

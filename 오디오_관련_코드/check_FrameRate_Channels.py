@@ -1,4 +1,4 @@
-OUTPUT_FILE = "noise_04.wav" #file name
+OUTPUT_FILE = "example1.wav" #file name
 
 # check frame_rate
 from scipy.io.wavfile import read as read_wav
