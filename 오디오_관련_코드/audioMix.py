@@ -7,21 +7,23 @@ SAMPLING_RATE = 16000
 MONO = 1
 
 number = 45
+Sound = "left"
 
-OUTPUT_FILE = "./mixedSound_"+str(number)+".wav"
-NOISE_FILE = "./n"+str(number)+".wav"
-ORIGINAL_FILE = "./example1.wav"
+for i in range(15, 27):
+    OUTPUT_FILE = "./mixedSound_"+str(number)+"_"+Sound+"_"+str(i)+".wav"
+    NOISE_FILE = "./n"+str(number)+".wav"
+    ORIGINAL_FILE = "./"+Sound+"_01.wav"
 
-sound1 = AudioSegment.from_wav(NOISE_FILE)
-sound2 = AudioSegment.from_wav(ORIGINAL_FILE)
+    sound1 = AudioSegment.from_wav(NOISE_FILE)
+    sound2 = AudioSegment.from_wav(ORIGINAL_FILE)
 
-combined_sounds = sound1 + sound1 + sound1 + sound1 + sound1 # 반복 횟수 조절
-combined_sounds = combined_sounds - 15   # dB 조절 (+ $$$), (- $$$)
-output = sound2.overlay(combined_sounds)
-output = output.set_channels(MONO) # stereo to mono
-output = output.set_frame_rate(SAMPLING_RATE) # frame_rate : 16000
+    combined_sounds = sound1 + sound1 + sound1 + sound1 + sound1 # 반복 횟수 조절
+    combined_sounds = combined_sounds - i   # dB 조절 (+ $$$), (- $$$)
+    output = sound2.overlay(combined_sounds)
+    output = output.set_channels(MONO) # stereo to mono
+    output = output.set_frame_rate(SAMPLING_RATE) # frame_rate : 16000
 
-output.export(OUTPUT_FILE, format="wav")
+    output.export(OUTPUT_FILE, format="wav")
 
 # check frame_rate
 from scipy.io.wavfile import read as read_wav

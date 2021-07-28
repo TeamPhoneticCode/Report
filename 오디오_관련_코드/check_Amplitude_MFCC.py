@@ -4,10 +4,12 @@ import librosa
 import librosa.display
 
 number = 45
+Sound = "left"
+i = 20
 
-OUTPUT_FILE = "./mixedSound_"+str(number)+".wav"
+OUTPUT_FILE = "./mixedSound_"+str(number)+"_"+Sound+"_"+str(i)+".wav"
 NOISE_FILE = "./n"+str(number)+".wav"
-ORIGINAL_FILE = "./example1.wav"
+ORIGINAL_FILE = "./"+Sound+"_01.wav"
 
 
 ### check amplitude_to_db
