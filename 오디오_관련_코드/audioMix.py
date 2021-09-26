@@ -19,8 +19,8 @@ sound1 = AudioSegment.from_wav(NOISE_FILE)
 sound2 = AudioSegment.from_wav(ORIGINAL_FILE)
 tTime = random.randrange(1, 20)
 tTime = tTime/10
-print(tTime)
-print(sound1)
+# print(tTime)
+# print(sound1)
 ##combined_sounds = sound1 + sound1 + sound1 + sound1 + sound1 # 반복 횟수 조절
 ##combined_sounds = combined_sounds + tTime   # dB 조절 (+ $$$), (- $$$)
 combined_sounds = sound1[SAMPLING_RATE*(tTime):SAMPLING_RATE*(tTime+1)]

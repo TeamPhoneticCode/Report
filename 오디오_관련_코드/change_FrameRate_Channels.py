@@ -7,7 +7,7 @@ import numpy as np
 SAMPLING_RATE = 16000 # hz : 16000
 MONO = 1 # mono : 1 ,,,,stereo : 2
 OUTPUT_FILE = 'RestaurantNoise.wav' #file name
-Sec = 3
+Sec = 1
 
 path_dir = './'
 file_list = os.listdir(path_dir)
